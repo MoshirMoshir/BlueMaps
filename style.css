@@ -211,20 +211,14 @@
 .menu {
   position: absolute;
   top: 0;
-  right: -200px;
+  right: 0px;
   width: 200px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffffbb;
-  z-index: 11;
   transition: .4s;
-}
-
-.menu.active {
-  background-color: #ffffffff;
-  right: 0;
 }
 
 .menu ul {
