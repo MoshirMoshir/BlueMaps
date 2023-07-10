@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Leaflet testing</title>
+      <link rel="stylesheet" href="leaflet/leaflet.css" />
+      <script src="leaflet/leaflet.js"></script>
+   </head>
+   <body>
+      <div id="map" style="width: 80%; height: 70vh"></div>
+      <script>
+         // Creating map options
+         var mapOptions = {
+            center: [17.3866, 78.4857],
+            zoom: 20,
+            attributionControl: false,
+            backgroundColor: "#fff",
+         };
+
+         // Creating a map object
+         var map = L.map("map", mapOptions);
+
+         // Creating an image overlay object
+         var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
+         var imageBounds = [
+            [17.387, 78.485], // Replace with the latitude and longitude coordinates for the top-left corner of your image
+            [17.383, 78.488], // Replace with the latitude and longitude coordinates for the bottom-right corner of your image
+         ];
+         var imageOverlay = L.imageOverlay(imageUrl, imageBounds);
+
+         // Adding image overlay to the map
+         imageOverlay.addTo(map);
+      </script>
+   </body>
+</html>

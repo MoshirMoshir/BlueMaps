@@ -1,0 +1,243 @@
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  /* Addes Stenberg as font option */
+@font-face {
+  font-family: 'Stenberg';
+  src: url(assets/StenbergITCStdRegular.otf);
+}
+
+:root {
+  --overlay-color: #ffffff50;
+}
+
+/* Uses Stenberg as defualt font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Stenberg;
+}
+
+.showcase {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: #000000;
+  z-index: 2;
+  transition: .4s;
+}
+
+.showcase.active {
+  width: calc(100% - 300px);
+  right: 300px;
+}
+
+.showcase header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  position: relative;
+  margin-top: 50px;
+  z-index: 10;
+}
+
+.text h2 {
+  font-size: 5em;
+  font-weight: 800;
+  line-height: 1em;
+}
+
+.text h3 {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1em;
+  margin-bottom: 30px;
+}
+
+.text p {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 20px 0;
+  max-width: 700px;
+
+}
+
+.text a {
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 700;
+  text-decoration: none;
+  color: #000000;
+  border: 2px solid #000000;
+  background-color: #ffffff93;
+  padding: 10px 20px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  transition: all .3s ease-in-out;
+}
+
+.text a:hover {
+  background: #00000094;
+  color: #ffffff;
+  letter-spacing: 4px;
+  scale: 1.1;
+}
+
+.logo {
+  cursor: pointer;
+  text-decoration: none;
+  color:inherit;
+  font-size: 2em;
+}
+
+.social {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transform: scale(1)
+
+}
+
+.social li {
+  list-style: none;
+  margin-right: 30px;
+  transition: 0.35s;
+}
+
+.social li:hover {
+  transform: scale(1.1) translateY(-15px);
+}
+
+@media(max-width: 991px) {
+  .showcase, .showcase header {
+    padding: 100px 50px;
+  }
+
+  .text h2 {
+    font-size: 3em;
+  }
+
+  .text h3 {
+    font-size: 1.5em;
+  }
+}
+
+.toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 5;
+  transition: .3s;
+}
+
+.toggle:hover {
+  animation: wiggle .7s;
+  animation-timing-function: linear;
+}
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+  
+}
+
+.toggle.active {
+  background: url('close.png');
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff50;
+  mix-blend-mode: overlay;
+}
+
+.showcase img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .8;
+  z-index: 0;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffbb;
+}
+
+.menu ul {
+  position: relative;
+  list-style: none;
+}
+
+.menu ul li a{
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding: 10px 20px;
+  display: block;
+  transition: all .3s ease-in-out;
+}
+
+.menu ul li a:hover {
+  background: #00000094;
+  color: #ffffff;
+  letter-spacing: 4px;
+  scale: 1.1;
+}
+  
