@@ -32,9 +32,10 @@
         <script>
            // Creating map options
            var mapOptions = {
-              center: [17.3858, 78.48655],
-              zoom: 19.2,
-              attributionControl: false,
+               crs: L.CRS.Simple,
+               minZoom: -2,
+               maxZoom: 3,
+               attributionControl: false,
            };
   
            // Creating a map object
@@ -42,14 +43,15 @@
   
            // Creating an image overlay object
            var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
-           var imageBounds = [
-              [17.387, 78.485], // Replace with the latitude and longitude coordinates for the top-left corner of your image
-              [17.383, 78.488], // Replace with the latitude and longitude coordinates for the bottom-right corner of your image
-           ];
-           var imageOverlay = L.imageOverlay(imageUrl, imageBounds);
-  
+           var bounds = [[0, 0], [3916,2172]];
+           var imageOverlay = L.imageOverlay(imageUrl, bounds);
+
            // Adding image overlay to the map
            imageOverlay.addTo(map);
+           //Adjusts the image to be in the map
+           map.fitBounds(bounds);
+           //Adjusts the map [start point] and zoom
+           map.setView([3400,1000], 0);
         </script>
           
  
@@ -74,11 +76,13 @@
 
     <script>
         const menuToggle = document.querySelector('.toggle');
+        const menuActive = document.querySelector('.menu');
         const showcase = document.querySelector('.showcase');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             showcase.classList.toggle('active');
+            menuActive.classList.toggle('active');
         })
     </script>
 
