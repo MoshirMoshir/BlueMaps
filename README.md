@@ -22,6 +22,6 @@ If you have any suggestions or would like to help, please feel free to contact m
 
 
 **Coded by: Moshir**  
-**Current map by: KlinkerKlank**
+**Current map by: KlinkerKlank**<br>
 **Map integration by: [Leaflet](https://leafletjs.com/)**
 
