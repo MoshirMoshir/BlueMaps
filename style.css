@@ -83,6 +83,18 @@
 
 .text a {
   display: inline-block;
+  color: #000000;
+  transition: all .3s ease-in-out;
+}
+
+.text a:hover {
+  background: #00000094;
+  color: #ffffff;
+  scale: 1.1;
+}
+
+.buttons a {
+  display: inline-block;
   font-size: 2em;
   font-weight: 700;
   text-decoration: none;
@@ -95,7 +107,7 @@
   transition: all .3s ease-in-out;
 }
 
-.text a:hover {
+.buttons a:hover {
   background: #00000094;
   color: #ffffff;
   letter-spacing: 4px;
@@ -212,7 +224,7 @@
   position: absolute;
   top: 0;
   right: 0px;
-  width: 200px;
+  width: 220px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -229,7 +241,7 @@
 .menu ul li a{
   text-decoration: none;
   color: #000000;
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: 500;
   padding: 10px 20px;
   display: block;
@@ -239,7 +251,16 @@
 .menu ul li a:hover {
   background: #00000094;
   color: #ffffff;
-  letter-spacing: 4px;
-  scale: 1.1;
+  letter-spacing: 2px;
+  scale: .8;
 }
+
+.mapcontainer {
+  display: none;
+}
+
+.mapcontainer.active {
+  display: flex;
+}
+
   

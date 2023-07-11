@@ -2,35 +2,40 @@
 <html>
    <head>
       <title>Leaflet testing</title>
+      <link rel="stylesheet" href="style.css">
       <link rel="stylesheet" href="leaflet/leaflet.css" />
       <script src="leaflet/leaflet.js"></script>
    </head>
    <body>
-      <div id="map" style="width: 80%; height: 70vh"></div>
-      <script>
-           // Creating map options
-           var mapOptions = {
-               crs: L.CRS.Simple,
-               minZoom: -2,
-               maxZoom: 3,
-               attributionControl: false,
-           };
-  
-           // Creating a map object
-           var map = L.map("map", mapOptions);
-  
-           // Creating an image overlay object
-           var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
-           var bounds = [[0, 0], [3916,2172]];
-           var imageOverlay = L.imageOverlay(imageUrl, bounds);
+      <div class="mapcontainer.active">
+         <div id="map" style="width: 80%; height: 70vh"></div>
+      </div>
 
-           // Adding image overlay to the map
-           imageOverlay.addTo(map);
-           //Adjusts the image to be in the map
-           map.fitBounds(bounds);
-           //Adjusts the map [start point] and zoom
-           map.setView([3700,300], 0);
-      </script>
+
+         <script>
+            // Creating map options
+            var mapOptions = {
+                  crs: L.CRS.Simple,
+                  minZoom: -2,
+                  maxZoom: 3,
+                  attributionControl: false,
+            };
+   
+            // Creating a map object
+            var map = L.map("map", mapOptions);
+   
+            // Creating an image overlay object
+            var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
+            var bounds = [[0, 0], [3916,2172]];
+            var imageOverlay = L.imageOverlay(imageUrl, bounds);
+
+            // Adding image overlay to the map
+            imageOverlay.addTo(map);
+            //Adjusts the image to be in the map
+            map.fitBounds(bounds);
+            //Adjusts the map [start point] and zoom
+            map.setView([3700,300], 0);
+         </script>
 
       <!-- OLD SCRIPT
       
