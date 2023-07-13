@@ -22,14 +22,18 @@ It is currently a work-in-progress but planned features are:
 
 If you have any suggestions or would like to help, please feel free to contact me via the [discord discussion](https://discord.com/channels/977061952960462848/1128284887472930888) or via this project page
 
+<br>
+<br>
+<br>
+<br>
 
+This project was inspired by KlinkerKlank's original efforts in making a map which can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2921898835)
+Additioanlly, I have recieved permission to keep his map on my website which you can find under the "KlinkerKlank" tab on the site
 
-
-This project was inspired by KlinkerKlank's original efforts in making a map which can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2921898835)*
-Additioanlly, I have recieved permission to keep his map on my website which you can find under "KlinkerKlank"
-
+<br>
+<br>
 
 **Coded by: Moshir**  <br>
-**Special Thanks: KlinkerKlank**
+**Special Thanks: KlinkerKlank** <br>
 **Map integration using: [Leaflet](https://leafletjs.com/)**
 
