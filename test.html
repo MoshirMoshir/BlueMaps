@@ -18,23 +18,47 @@
                   crs: L.CRS.Simple,
                   minZoom: -2,
                   maxZoom: 3,
-                  attributionControl: false,
+                  attributionControl: false
             };
+
    
             // Creating a map object
             var map = L.map("map", mapOptions);
+            
    
             // Creating an image overlay object
-            var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
-            var bounds = [[0, 0], [3916,2172]];
+            var imageUrl = "assets/MediumB.png"; // Replace with the actual path to your image
+            var bounds = [[0, 0], [2217,3086]];
             var imageOverlay = L.imageOverlay(imageUrl, bounds);
+            var image2test = L.imageOverlay("assets/ShallowA.png", [0,0], [1532,3449]);
 
             // Adding image overlay to the map
             imageOverlay.addTo(map);
             //Adjusts the image to be in the map
             map.fitBounds(bounds);
             //Adjusts the map [start point] and zoom
-            map.setView([3700,300], 0);
+            map.setView([2000,300], 0);
+
+            // Add overlay markers here
+               // Sharks
+               var shark1 = L.marker([2000,300]).bindPopup("Shark 1");
+               var shark2 = L.marker([2100,300]).bindPopup("Shark 2");
+               var shark3 = L.marker([2200,300]).bindPopup("Shark 3");
+               var shark4 = L.marker([1000,300]).bindPopup("Shark 4");
+
+               var sharks = L.layerGroup([shark1, shark2, shark3, shark4]);
+
+
+            // Add layer control here
+            var baseMaps = {
+               "Base": imageOverlay,
+               "ShallowA": image2test
+            };
+            var overlayMaps = {
+               "Sharks": sharks
+            };
+            var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+
          </script>
 
       <!-- OLD SCRIPT
