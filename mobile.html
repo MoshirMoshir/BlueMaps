@@ -8,21 +8,29 @@
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
     <style>
+        #mapcontainer {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+        }
         #map {
           width: 100%;
           height: 80vh;
-          top: 0;
+          position: relative;
+          
         }
         #map2 {
             width: 100%;
             height: 80vh;
+            position: relative;
         }
         #map3 {
             width: 100%;
             height: 80vh;
+            position: relative;
         }
       </style>
-    <title>BlueMaps - World Map</title>
+    <title>BlueMaps - World Map Mobile</title>
 
 </head>
 <body>
@@ -36,18 +44,18 @@
 
         <div class="overlay"></div>
 
+        <section id="mapcontainer">
         <!-- Map implementation will go here -->
         <div id="map"></div>
         <div id="map2"></div>
         <div id="map3"></div>
-
+        </section>
         <script>
-
             //Shallows Map
                 // Creating map options
                 var mapOptions = {
                     crs: L.CRS.Simple,
-                    minZoom: -3,
+                    minZoom: -4,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -67,9 +75,9 @@
                 // Adding image overlay to the map
                 ShallowsA.addTo(map);
                 //Adjusts the image to be in the map
-                map.fitBounds(ShallowBounds);
+                // map.fitBounds(ShallowBounds);
                 //Adjusts the map [start point] and zoom
-                map.setView([850,2000], -2);
+                map.setView([850,2000], -3);
 
                 var baseMaps = {
                     "ShallowsA": ShallowsA,
@@ -88,7 +96,7 @@
             //Mediums Map
                 var map2Options = {
                     crs: L.CRS.Simple,
-                    minZoom: -3,
+                    minZoom: -4,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -107,9 +115,9 @@
                 // Adding image overlay to the map
                 MediumA.addTo(map2);
                 //Adjusts the image to be in the map
-                map2.fitBounds(MediumBounds);
+                // map2.fitBounds(MediumBounds);
                 //Adjusts the map [start point] and zoom
-                map2.setView([1100,1600], -2);
+                map2.setView([1100,1600], -3);
 
                 var baseMaps2 = {
                     "MediumA": MediumA,
@@ -127,7 +135,7 @@
 
                 var map3Options = {
                     crs: L.CRS.Simple,
-                    minZoom: -3,
+                    minZoom: -4,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -143,9 +151,9 @@
                 // Adding image overlay to the map
                 DepthsA.addTo(map3);
                 //Adjusts the image to be in the map
-                map3.fitBounds(DepthsBounds);
+                // map3.fitBounds(DepthsBounds);
                 //Adjusts the map [start point] and zoom
-                map3.setView([1150,1300], -2);
+                map3.setView([1150,1300], -3);
 
                 var baseMaps3 = {
                     "DepthsA": DepthsA,
