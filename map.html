@@ -47,7 +47,7 @@
                 // Creating map options
                 var mapOptions = {
                     crs: L.CRS.Simple,
-                    minZoom: -2,
+                    minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -69,7 +69,7 @@
                 //Adjusts the image to be in the map
                 map.fitBounds(ShallowBounds);
                 //Adjusts the map [start point] and zoom
-                map.setView([850,2000], -1);
+                map.setView([850,2000], -2);
 
                 var baseMaps = {
                     "ShallowsA": ShallowsA,
@@ -88,7 +88,7 @@
             //Mediums Map
                 var map2Options = {
                     crs: L.CRS.Simple,
-                    minZoom: -2,
+                    minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -109,7 +109,7 @@
                 //Adjusts the image to be in the map
                 map2.fitBounds(MediumBounds);
                 //Adjusts the map [start point] and zoom
-                map2.setView([1100,1600], -1);
+                map2.setView([1100,1600], -2);
 
                 var baseMaps2 = {
                     "MediumA": MediumA,
@@ -127,7 +127,7 @@
 
                 var map3Options = {
                     crs: L.CRS.Simple,
-                    minZoom: -2,
+                    minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
                 };
@@ -145,7 +145,7 @@
                 //Adjusts the image to be in the map
                 map3.fitBounds(DepthsBounds);
                 //Adjusts the map [start point] and zoom
-                map3.setView([1150,1300], -1);
+                map3.setView([1150,1300], -2);
 
                 var baseMaps3 = {
                     "DepthsA": DepthsA,

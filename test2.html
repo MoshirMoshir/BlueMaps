@@ -8,21 +8,29 @@
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
     <style>
+        #mapcontainer {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+        }
         #map {
-          width: 100%;
+          width: 90%;
           height: 80vh;
-          top: 0;
+          position: relative;
+          
         }
         #map2 {
-            width: 100%;
+            width: 90%;
             height: 80vh;
+            position: relative;
         }
         #map3 {
-            width: 100%;
+            width: 90%;
             height: 80vh;
+            position: relative;
         }
       </style>
-    <title>BlueMaps - test2</title>
+    <title>BlueMaps - World Map</title>
 
 </head>
 <body>
@@ -36,13 +44,13 @@
 
         <div class="overlay"></div>
 
+        <section id="mapcontainer">
         <!-- Map implementation will go here -->
         <div id="map"></div>
         <div id="map2"></div>
         <div id="map3"></div>
-
+        </section>
         <script>
-
             //Shallows Map
                 // Creating map options
                 var mapOptions = {
@@ -156,7 +164,33 @@
                 };
                 var layerControl3 = L.control.layers(baseMaps3, overlayMaps3, {collapsed: false}).addTo(map3);
         </script>
+        <!-- Old script for all Shallows maps
+            <script>
+           // Creating map options
+           var mapOptions = {
+               crs: L.CRS.Simple,
+               minZoom: -3,
+               maxZoom: 3,
+               attributionControl: false,
+           };
+  
+           // Creating a map object
+           var map = L.map("map", mapOptions);
+  
+           // Creating an image overlay object
+           var imageUrl = "assets/Shallows2dAll.png"; // Replace with the actual path to your image
+           var bounds = [[0, 0], [6000,7500]];
+           var imageOverlay = L.imageOverlay(imageUrl, bounds);
+
+           // Adding image overlay to the map
+           imageOverlay.addTo(map);
+           //Adjusts the image to be in the map
+           map.fitBounds(bounds);
+           //Adjusts the map [start point] and zoom
+           map.setView([5100,2000], -1);
+        </script> -->
           
+ 
         <!-- links to socials and whatnot -->
         <ul class="social">
             <li><a href="https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/"><i class="fa-brands fa-steam fa-3x" style="color: #adadad" alt="Steam Page"></i></a></li>
@@ -171,7 +205,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="klinkerklank.html">KlinkerKlank</a></li>
-            <li><a href="shallows2d.html">Shallows 2D</a></li>
+            <li><a href="map.html">World Map</a></li>
         </ul>
     </div>
 
