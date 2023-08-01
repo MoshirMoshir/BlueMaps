@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js"></script>
+    <!-- Fullscreen button leaflet plugin -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
     <style>
         #map {
           width: 100%;
@@ -50,6 +53,7 @@
                     minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
+                    fullscreenControl: true,
                 };
 
                 // Creating a map object
@@ -91,6 +95,7 @@
                     minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
+                    fullscreenControl: true,
                 };
 
                 // Creating a map object
@@ -130,6 +135,7 @@
                     minZoom: -3,
                     maxZoom: 3,
                     attributionControl: false,
+                    fullscreenControl: true,
                 };
 
                 // Creating a map object
