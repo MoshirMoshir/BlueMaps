@@ -3,7 +3,7 @@
 BlueMaps is an interactive map of the Blue Hole from Dave the Diver!
 
 ## !!! Announcement !!!
-Due to personal obligations, I must put this project on hold for the remainder of the month. I will be back in August and am looking forward to flushing out my feature list and making a super awesome map!
+Been super busy with school and whatnot, I will do my best to work on the map and improve things when I can.
 It would be very appreciated if you can provide any help; Ideally locations of points of interests will be compiled by the time I get back so I can just add the markers to the map uwu
 Once again, if you would like to help, join the official Dave the Diver Discord and check out the [discussion page](https://discord.com/channels/977061952960462848/1128284887472930888)
 ## 
