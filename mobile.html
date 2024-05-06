@@ -53,6 +53,19 @@
         <div id="map3"></div>
         </section>
         <script>
+
+            // Function to make maps pixelated - Applied after each map
+            function applyPixelatedRenderingToImageOverlays() {
+            // Get all image overlays rendered
+            var imageOverlays = document.querySelectorAll('.leaflet-image-layer');
+
+            // Loop through each image overlay
+            imageOverlays.forEach(function (imageOverlay) {
+                // Apply pixelated rendering to the image overlay
+                imageOverlay.style.imageRendering = 'pixelated';
+            });
+            }
+
             //Shallows Map
                 // Creating map options
                 var mapOptions = {
@@ -95,6 +108,11 @@
                 };
                 var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
 
+                // Attach an event listener to the baselayerchange event of the map
+                map.on('baselayerchange', function (event) {
+                // Call the function to apply pixelated rendering to all image overlays
+                applyPixelatedRenderingToImageOverlays();
+                });
 
             //Mediums Map
                 var map2Options = {
@@ -135,6 +153,12 @@
                 };
                 var layerControl2 = L.control.layers(baseMaps2, overlayMaps2, {collapsed: false}).addTo(map2);
             
+                // Attach an event listener to the baselayerchange event of the map
+                map2.on('baselayerchange', function (event) {
+                // Call the function to apply pixelated rendering to all image overlays
+                applyPixelatedRenderingToImageOverlays();
+                });
+                
             //Depths Map
 
                 var map3Options = {
@@ -168,6 +192,15 @@
                 // Add overlays here later
                 };
                 var layerControl3 = L.control.layers(baseMaps3, overlayMaps3, {collapsed: false}).addTo(map3);
+
+                // Attach an event listener to the baselayerchange event of the map
+                map3.on('baselayerchange', function (event) {
+                // Call the function to apply pixelated rendering to all image overlays
+                applyPixelatedRenderingToImageOverlays();
+                });
+
+            // applies pixelated rendering on page load
+            applyPixelatedRenderingToImageOverlays();
         </script>
         <!-- Old script for all Shallows maps
             <script>
