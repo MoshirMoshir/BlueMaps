@@ -1,39 +1,41 @@
-
 # BlueMaps
 BlueMaps is an interactive map of the Blue Hole from Dave the Diver!
 
 ## !!! Announcement !!!
-Been super busy with school and whatnot, I will do my best to work on the map and improve things when I can.
-It would be very appreciated if you can provide any help; Ideally locations of points of interests will be compiled by the time I get back so I can just add the markers to the map uwu
-Once again, if you would like to help, join the official Dave the Diver Discord and check out the [discussion page](https://discord.com/channels/977061952960462848/1128284887472930888)
+I am extremely busy and don't have the free time to actively work on this project. <br>
+I will do my best to update it from time to time; it would be very appreciated if you can provide any help: <br>
+Currently I need to compile all the locations of points of interests such as Sharks, Fish, Items, etc <br>
+If anyone is able to provide a clearer map OR have the art skills to colorize/beutify the current ones that'd be lit uwu <br> <br>
+If you would like to help or get in contact with me, join the official [Dave the Diver Discord](https://discord.com/invite/davethediver) and check out the [BlueMaps discussion page](https://discord.com/channels/977061952960462848/1128284887472930888)
+
 ## 
 
 ![maxresdefault1](https://github.com/MoshirMoshir/BlueMaps/assets/72672977/d0c52be9-12a3-48d4-9927-59adcfb2f7a3)
 
-It is currently a work-in-progress but planned features are:
+The Site is still in development but planned features are:
 
  - [x] High quality 2d unrendered versions of every map obtained and uploaded
  - [x] Usablity on mobile
- - [ ] Adding overlays for where sharks, fishes, and other creatures can spawn
- - [ ] Adding additional pages exclusive to each depth
- - [ ] Adding pages where you can find more information about fish, mission locations, etc (mini-wiki)
- - [ ] Stitching together or obtaining high quality rendered versions of every map
+ - [x] Created groundwork code for overlays
+ - [ ] Actually adding the overlays:
+ - [ ] Add Shark Overlay
+ - [ ] Add Extraction Points Overlay
+ - [ ] Add Fish Overlay
+ - [ ] Add Items Overlay
+ - [ ] Add additional pages exclusive to each depth
+ - [ ] Make the Main Map page prettier and overhaul Website UI
+ - [ ] Add pages where you can find more information about fish, mission locations, etc (mini-wiki)
+ - [ ] Stitching together or obtaining high quality rendered versions of every map (This is extremely tedious and will probably not happen unless someone else does it)
  - [ ] More features TBD
 
-If you have any suggestions or would like to help, please feel free to contact me via the [discord discussion](https://discord.com/channels/977061952960462848/1128284887472930888) or via this project page
+If you have any suggestions, please feel free create an [issue](https://github.com/MoshirMoshir/BlueMaps/issues) on this repository, leave a comment in the [ BlueMaps discord discussion page](https://discord.com/channels/977061952960462848/1128284887472930888), or contact me on discord @moshir
+
+> This project was inspired by KlinkerKlank's original efforts in making a map which can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2921898835)
+> I have since removed easy access of his map from the site as I am working on the features that will outclass his original map, but you can still find it [here](https://bluemaps.moshir.dev/klinkerklank.html)
 
 <br>
-<br>
-<br>
-<br>
 
-This project was inspired by KlinkerKlank's original efforts in making a map which can be found [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2921898835)
-Additioanlly, I have recieved permission to keep his map on my website which you can find under the "KlinkerKlank" tab on the site
-
-<br>
-<br>
-
-**Coded by: Moshir**  <br>
-**Special Thanks: KlinkerKlank** <br>
-**Map integration using: [Leaflet](https://leafletjs.com/)**
+**Coded by:** *Moshir*  <br>
+**Special Thanks:** *KlinkerKlank*, *Wendy*, and all those who supported me on the [BlueMaps discussion page](https://discord.com/channels/977061952960462848/1128284887472930888) <br>
+**Map integration using:** *[Leaflet](https://leafletjs.com/)*
 
