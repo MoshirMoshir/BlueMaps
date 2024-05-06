@@ -51,48 +51,134 @@
         <div id="map3"></div>
         </section>
         <script>
-            //Shallows Map
-                // Creating map options
-                var mapOptions = {
-                    crs: L.CRS.Simple,
-                    minZoom: -4,
-                    maxZoom: 3,
-                    attributionControl: false,
-                };
 
-                // Creating a map object
-                var map = L.map("map", mapOptions);
-    
-                // Creating an image overlay object
-                var ShallowBounds = [[0, 0], [1700,4000]];
-                var ShallowsA = L.imageOverlay("assets/Shallows/ShallowsA.png", ShallowBounds);
-                var ShallowsB = L.imageOverlay("assets/Shallows/ShallowsB.png", ShallowBounds);
-                var ShallowsC = L.imageOverlay("assets/Shallows/ShallowsC.png", ShallowBounds);
-                var ShallowsD = L.imageOverlay("assets/Shallows/ShallowsD.png", ShallowBounds);
-                var ShallowsE = L.imageOverlay("assets/Shallows/ShallowsE.png", ShallowBounds);
-                var ShallowsF = L.imageOverlay("assets/Shallows/ShallowsF.png", ShallowBounds);
+// Shallows Map
+// Creating map options
+var mapOptions = {
+    crs: L.CRS.Simple,
+    minZoom: -4,
+    maxZoom: 3,
+    attributionControl: false,
+};
 
-                // Adding image overlay to the map
-                ShallowsA.addTo(map);
-                //Adjusts the image to be in the map
-                // map.fitBounds(ShallowBounds);
-                //Adjusts the map [start point] and zoom
-                map.setView([850,2000], -3);
+// Creating a map object
+var map = L.map("map", mapOptions);
 
-                var baseMaps = {
-                    "ShallowsA": ShallowsA,
-                    "ShallowsB": ShallowsB,
-                    "ShallowsC": ShallowsC,
-                    "ShallowsD": ShallowsD,
-                    "ShallowsE": ShallowsE,
-                    "ShallowsF": ShallowsF
-                };
-                var overlayMaps = {
-                // Add overlays here later
-                };
-                var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+// Creating an image overlay object for each base map
+var ShallowBounds = [[0, 0], [1700, 4000]];
+var ShallowsA = L.imageOverlay("assets/Shallows/ShallowsA.png", ShallowBounds);
+var ShallowsB = L.imageOverlay("assets/Shallows/ShallowsB.png", ShallowBounds);
+var ShallowsC = L.imageOverlay("assets/Shallows/ShallowsC.png", ShallowBounds);
+var ShallowsD = L.imageOverlay("assets/Shallows/ShallowsD.png", ShallowBounds);
+var ShallowsE = L.imageOverlay("assets/Shallows/ShallowsE.png", ShallowBounds);
+var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF.png", ShallowBounds);
+
+// Adding each base map to the map
+ShallowsA.addTo(map);
+ShallowsB.addTo(map);
+ShallowsC.addTo(map);
+ShallowsD.addTo(map);
+ShallowsE.addTo(map);
+ShallowsF.addTo(map);
+
+// Adjusts the map [start point] and zoom
+map.setView([850, 2000], -3);
+
+// Creating an object to store overlay images for each base map
+var overlays = {
+    "ShallowsA": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsAExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsASharks.png", ShallowBounds)
+    },
+    "ShallowsB": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsBExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsBSharks.png", ShallowBounds)
+    }, 
+    "ShallowsC": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsCExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsCSharks.png", ShallowBounds)
+    },
+    "ShallowsD": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsDExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsDSharks.png", ShallowBounds)
+    },
+    "ShallowsE": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsEExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsESharks.png", ShallowBounds)
+    },
+    "ShallowsF": {
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsFExtract.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsFSharks.png", ShallowBounds)
+    }
+};
+
+// Create base maps
+var baseMaps = {
+    "ShallowsA": ShallowsA,
+    "ShallowsB": ShallowsB,
+    "ShallowsC": ShallowsC,
+    "ShallowsD": ShallowsD,
+    "ShallowsE": ShallowsE,
+    "ShallowsF": ShallowsF
+};
+
+// Initially no overlays selected
+// Create overlay maps
+var overlayMaps = {
+    "Extracts": overlays["ShallowsA"]["Extracts"],
+    "Sharks": overlays["ShallowsA"]["Sharks"]
+};
+
+// Add layer control with base maps and overlay maps
+var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
+// Function to generate overlay maps based on the selected base map
+function generateOverlayMaps(baseMapName) {
+    var overlayMaps = {};
+    var overlayGroup = overlays[baseMapName];
+    for (var overlayName in overlayGroup) {
+        if (overlayGroup.hasOwnProperty(overlayName)) {
+            overlayMaps[overlayName] = overlayGroup[overlayName];
+        }
+    }
+    return overlayMaps;
+}
+
+// Update overlays when base map is changed
+map.on('baselayerchange', function (event) {
+    // Clear the overlayMaps object
+    overlayMaps = {};
+
+    // Remove all overlay layers from the map
+    for (var overlayName in overlays) {
+        if (overlays.hasOwnProperty(overlayName)) {
+            var overlayGroup = overlays[overlayName];
+            for (var overlay in overlayGroup) {
+                if (overlayGroup.hasOwnProperty(overlay)) {
+                    map.removeLayer(overlayGroup[overlay]);
+                }
+            }
+        }
+    }
+
+    // Regenerate overlayMaps based on the new base map
+    overlayMaps = generateOverlayMaps(event.name);
+
+    // Update the layer control with the new overlayMaps
+    layerControl.remove();
+    layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+});
 
 
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////                
             //Mediums Map
                 var map2Options = {
                     crs: L.CRS.Simple,
@@ -204,7 +290,6 @@
     <div class="menu">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="klinkerklank.html">KlinkerKlank</a></li>
             <li><a href="map.html">World Map</a></li>
         </ul>
     </div>
