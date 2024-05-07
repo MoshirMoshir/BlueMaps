@@ -17,9 +17,10 @@ The Site is still in development but planned features are:
  - [x] High quality 2d unrendered versions of every map obtained and uploaded
  - [x] Usablity on mobile
  - [x] Created groundwork code for overlays
- - [ ] Actually adding the overlays:
+ - [x] Add groundwork/code of overlays
+ - [x] Update Maps to be less cluttered
  - [ ] Add Shark Overlay
- - [ ] Add Extraction Points Overlay
+ - [x] Add Escape Pod Overlay
  - [ ] Add Fish Overlay
  - [ ] Add Items Overlay
  - [ ] Add additional pages exclusive to each depth
