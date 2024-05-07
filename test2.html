@@ -66,20 +66,15 @@ var map = L.map("map", mapOptions);
 
 // Creating an image overlay object for each base map
 var ShallowBounds = [[0, 0], [1700, 4000]];
-var ShallowsA = L.imageOverlay("assets/Shallows/ShallowsA.png", ShallowBounds);
-var ShallowsB = L.imageOverlay("assets/Shallows/ShallowsB.png", ShallowBounds);
-var ShallowsC = L.imageOverlay("assets/Shallows/ShallowsC.png", ShallowBounds);
-var ShallowsD = L.imageOverlay("assets/Shallows/ShallowsD.png", ShallowBounds);
-var ShallowsE = L.imageOverlay("assets/Shallows/ShallowsE.png", ShallowBounds);
-var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF.png", ShallowBounds);
+var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
+var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
+var ShallowsC = L.imageOverlay("assets/New Shallows/ShallowsC/ShallowsC.png", ShallowBounds);
+var ShallowsD = L.imageOverlay("assets/New Shallows/ShallowsD/ShallowsD.png", ShallowBounds);
+var ShallowsE = L.imageOverlay("assets/New Shallows/ShallowsE/ShallowsE.png", ShallowBounds);
+var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF/ShallowsF.png", ShallowBounds);
 
 // Adding each base map to the map
 ShallowsA.addTo(map);
-ShallowsB.addTo(map);
-ShallowsC.addTo(map);
-ShallowsD.addTo(map);
-ShallowsE.addTo(map);
-ShallowsF.addTo(map);
 
 // Adjusts the map [start point] and zoom
 map.setView([850, 2000], -3);
@@ -87,28 +82,28 @@ map.setView([850, 2000], -3);
 // Creating an object to store overlay images for each base map
 var overlays = {
     "ShallowsA": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsAExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsASharks.png", ShallowBounds)
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsA/EscapePodsA.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksA.png", ShallowBounds)
     },
     "ShallowsB": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsBExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsBSharks.png", ShallowBounds)
-    }, 
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsB/EscapePodsB.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksB.png", ShallowBounds)
+    },
     "ShallowsC": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsCExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsCSharks.png", ShallowBounds)
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsC/EscapePodsC.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksC.png", ShallowBounds)
     },
     "ShallowsD": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsDExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsDSharks.png", ShallowBounds)
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsD/EscapePodsD.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksD.png", ShallowBounds)
     },
     "ShallowsE": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsEExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsESharks.png", ShallowBounds)
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsE/EscapePodsE.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksE.png", ShallowBounds)
     },
     "ShallowsF": {
-        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsFExtract.png", ShallowBounds),
-        "Sharks": L.imageOverlay("assets/New Shallows/ShallowsFSharks.png", ShallowBounds)
+        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsF/EscapePodsF.png", ShallowBounds),
+        "Sharks": L.imageOverlay("assets/New Shallows/SharksF.png", ShallowBounds)
     }
 };
 
@@ -126,7 +121,7 @@ var baseMaps = {
 // Create overlay maps
 var overlayMaps = {
     "Extracts": overlays["ShallowsA"]["Extracts"],
-    "Sharks": overlays["ShallowsA"]["Sharks"]
+    // "Sharks": overlays["ShallowsA"]["Sharks"]
 };
 
 // Add layer control with base maps and overlay maps

@@ -1,89 +1,298 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Bluemaps - testing</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="leaflet/leaflet.css" />
-      <script src="leaflet/leaflet.js"></script>
-   </head>
-   <body>
-      <div class="mapcontainer.active">
-         <div id="map" style="width: 80%; height: 70vh"></div>
-      </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/74cbb1e902.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <script src="leaflet/leaflet.js"></script>
+    <!-- Fullscreen button leaflet plugin -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <style>
+        #map {
+          width: 100%;
+          height: 80vh;
+          top: 0;
+        }
+        #map2 {
+            width: 100%;
+            height: 80vh;
+        }
+        #map3 {
+            width: 100%;
+            height: 80vh;
+        }
+      </style>
+    <title>BlueMaps - World Map</title>
 
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <a href="/" class="logo">BlueMaps</a>
+            <div class="toggle"><i class="fa-solid fa-compass fa-3x"></i></div>
+        </header>
 
-         <script>
-            // Creating map options
-            var mapOptions = {
-                  crs: L.CRS.Simple,
-                  minZoom: -2,
-                  maxZoom: 3,
-                  attributionControl: false
-            };
+        <img src="assets/background.jpeg" alt="Background" class="biglogo">
 
-   
-            // Creating a map object
-            var map = L.map("map", mapOptions);
+        <div class="overlay"></div>
+
+        <!-- Map implementation will go here -->
+        <div id="map"></div>
+        <div id="map2"></div>
+        <div id="map3"></div>
+
+        <script>
+
+            // Function to make maps pixelated - Applied after each map
+            function applyPixelatedRenderingToImageOverlays() {
+            // Get all image overlays rendered
+            var imageOverlays = document.querySelectorAll('.leaflet-image-layer');
+
+            // Loop through each image overlay
+            imageOverlays.forEach(function (imageOverlay) {
+                // Apply pixelated rendering to the image overlay
+                imageOverlay.style.imageRendering = 'pixelated';
+            });
+            }
+
+            // Shallows Map
+                // Creating map options
+                var mapOptions = {
+                    crs: L.CRS.Simple,
+                    minZoom: -3,
+                    maxZoom: 3,
+                    attributionControl: false,
+                    fullscreenControl: true,
+                };
+
+                // Creating a map object
+                var map = L.map("map", mapOptions);
+                
+                // Creating an image overlay as basemaps
+                var ShallowBounds = [[0, 0], [1700,4000]];
+                var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
+                var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
+                var ShallowsC = L.imageOverlay("assets/New Shallows/ShallowsC/ShallowsC.png", ShallowBounds);
+                var ShallowsD = L.imageOverlay("assets/New Shallows/ShallowsD/ShallowsD.png", ShallowBounds);
+                var ShallowsE = L.imageOverlay("assets/New Shallows/ShallowsE/ShallowsE.png", ShallowBounds);
+                var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF/ShallowsF.png", ShallowBounds);
+
+                // Adding initial basemap to the map
+                ShallowsA.addTo(map);
+                // Adjusts the image to be in the map
+                map.fitBounds(ShallowBounds);
+                // Adjusts the map [start point] and zoom
+                map.setView([850,2000], -2);
+
+                // Object to hold the basemaps
+                var baseMaps = {
+                    "ShallowsA": ShallowsA,
+                    "ShallowsB": ShallowsB,
+                    "ShallowsC": ShallowsC,
+                    "ShallowsD": ShallowsD,
+                    "ShallowsE": ShallowsE,
+                    "ShallowsF": ShallowsF
+                };     
+
+                // Object to hold overlays
+                var overlays = {
+                    "ShallowsA": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsA/EscapePodsA.png", ShallowBounds),
+                        // Example layout, TBD to implement 
+                        /*
+                        "Sharks": L.imageOverlay("assets/New Shallows/SharksA.png", ShallowBounds),
+                        "Fish": L.imageOverlay("assets/New Shallows/FishA.png", ShallowBounds),
+                        "Items": L.imageOverlay("assets/New Shallows/ItemsA.png", ShallowBounds),
+                        "Missions": L.imageOverlay("assets/New Shallows/MissionsA.png", ShallowBounds)
+                        */
+                    },
+                    "ShallowsB": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsB/EscapePodsB.png", ShallowBounds)
+                    },
+                    "ShallowsC": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsC/EscapePodsC.png", ShallowBounds)
+                    },
+                    "ShallowsD": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsD/EscapePodsD.png", ShallowBounds)
+                    },
+                    "ShallowsE": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsE/EscapePodsE.png", ShallowBounds)
+                    },
+                    "ShallowsF": {
+                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsF/EscapePodsF.png", ShallowBounds)
+                    }
+                };      
+
+                // Create overlay maps with default options
+                var overlayMaps = {
+                    "Extracts": overlays["ShallowsA"]["Extracts"],
+                    // "Sharks": overlays["ShallowsA"]["Sharks"]
+                };
+
+                // Function to generate overlay maps based on the selected base map
+                function generateOverlayMaps(baseMapName) {
+                    var overlayMaps = {};
+                    var overlayGroup = overlays[baseMapName];
+                    for (var overlayName in overlayGroup) {
+                        if (overlayGroup.hasOwnProperty(overlayName)) {
+                            overlayMaps[overlayName] = overlayGroup[overlayName];
+                        }
+                    }
+                    return overlayMaps;
+                }
+
+                var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+
+                // Runs on basemap change
+                map.on('baselayerchange', function (event) {
+                    // Overlay Logic
+                        // Removes assigned overlay from previous basemap
+                        overlayMaps = {};
+
+                        // Remove all rendered overlay layers from the map
+                        for (var overlayName in overlays) {
+                            if (overlays.hasOwnProperty(overlayName)) {
+                                var overlayGroup = overlays[overlayName];
+                                for (var overlay in overlayGroup) {
+                                    if (overlayGroup.hasOwnProperty(overlay)) {
+                                        map.removeLayer(overlayGroup[overlay]);
+                                    }
+                                }
+                            }
+                        }
+
+                        // Regenerate overlayMaps based on the new basemap
+                        overlayMaps = generateOverlayMaps(event.name);
+
+                        // Update the layer control with the new overlayMaps
+                        layerControl.remove();
+                        layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
+                    // Apply pixel filter to new basemap
+                    applyPixelatedRenderingToImageOverlays();
+                });
+
+            // Mediums Map
+                var map2Options = {
+                    crs: L.CRS.Simple,
+                    minZoom: -3,
+                    maxZoom: 3,
+                    attributionControl: false,
+                    fullscreenControl: true,
+                };
+
+                // Creating a map object
+                var map2 = L.map("map2", map2Options);
+
+                // Creating an image overlay as basemaps
+                var MediumBounds = [[0, 0], [2200,3200]];
+                var MediumA = L.imageOverlay("assets/New Mediums/MediumA/MediumA.png", MediumBounds);
+                var MediumB = L.imageOverlay("assets/New Mediums/MediumB/MediumB.png", MediumBounds);
+                var MediumC = L.imageOverlay("assets/New Mediums/MediumC/MediumC.png", MediumBounds);
+                var MediumD = L.imageOverlay("assets/New Mediums/MediumD/MediumD.png", MediumBounds);
+                var MediumF = L.imageOverlay("assets/New Mediums/MediumF/MediumF.png", MediumBounds);
+
+                // Adding initial basemap to the map
+                MediumA.addTo(map2);
+                // Adjusts the image to be in the map
+                map2.fitBounds(MediumBounds);
+                // Adjusts the map [start point] and zoom
+                map2.setView([1100,1600], -2);
+
+                var baseMaps2 = {
+                    "MediumA": MediumA,
+                    "MediumB": MediumB,
+                    "MediumC": MediumC,
+                    "MediumD": MediumD,
+                    "MediumF": MediumF
+                };
+                var overlayMaps2 = {
+                // Add overlays here later
+                };
+                var layerControl2 = L.control.layers(baseMaps2, overlayMaps2, {collapsed: false}).addTo(map2);
             
-   
-            // Creating an image overlay object
-            var imageUrl = "assets/MediumB.png"; // Replace with the actual path to your image
-            var bounds = [[0, 0], [2217,3086]];
-            var imageOverlay = L.imageOverlay(imageUrl, bounds);
-            var image2test = L.imageOverlay("assets/ShallowA.png", [0,0], [1532,3449]);
+                // Runs on basemap change
+                map2.on('baselayerchange', function (event) {
+                // Call the function to apply pixelated rendering to all image overlays
+                applyPixelatedRenderingToImageOverlays();
+                });
 
-            // Adding image overlay to the map
-            imageOverlay.addTo(map);
-            //Adjusts the image to be in the map
-            map.fitBounds(bounds);
-            //Adjusts the map [start point] and zoom
-            map.setView([2000,300], 0);
+            //Depths Map
 
-            // Add overlay markers here
-               // Sharks
-               var shark1 = L.marker([2000,300]).bindPopup("Shark 1");
-               var shark2 = L.marker([2100,300]).bindPopup("Shark 2");
-               var shark3 = L.marker([2200,300]).bindPopup("Shark 3");
-               var shark4 = L.marker([1000,300]).bindPopup("Shark 4");
+                var map3Options = {
+                    crs: L.CRS.Simple,
+                    minZoom: -3,
+                    maxZoom: 3,
+                    attributionControl: false,
+                    fullscreenControl: true,
+                };
 
-               var sharks = L.layerGroup([shark1, shark2, shark3, shark4]);
+                // Creating a map object
+                var map3 = L.map("map3", map3Options);
+
+                // Creating an image overlay as basemaps
+                var DepthsBounds = [[0, 0], [2300,2600]];
+                var DepthsA = L.imageOverlay("assets/New Depths/DepthsA/DepthsA.png", DepthsBounds);
+                var DepthsB = L.imageOverlay("assets/New Depths/DepthsB/DepthsB.png", DepthsBounds);
+
+                // Adding initial basemap to the map
+                DepthsA.addTo(map3);
+                // Adjusts the image to be in the map
+                map3.fitBounds(DepthsBounds);
+                // Adjusts the map [start point] and zoom
+                map3.setView([1150,1300], -2);
+
+                var baseMaps3 = {
+                    "DepthsA": DepthsA,
+                    "DepthsB": DepthsB
+                };
+                var overlayMaps3 = {
+                // Add overlays here later
+                };
+                var layerControl3 = L.control.layers(baseMaps3, overlayMaps3, {collapsed: false}).addTo(map3);
+
+                // Runs on basemap change
+                map3.on('baselayerchange', function (event) {
+                // Call the function to apply pixelated rendering to all image overlays
+                applyPixelatedRenderingToImageOverlays();
+                });
+
+            // applies pixelated rendering on page load
+            applyPixelatedRenderingToImageOverlays();
+
+        </script>       
+ 
+        <!-- links to socials and whatnot -->
+        <ul class="social">
+            <li><a href="https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/"><i class="fa-brands fa-steam fa-3x" style="color: #adadad" alt="Steam Page"></i></a></li>
+            <li><a href="https://mintrocketgames.com/en/DaveTheDiver"><i class="fa-solid fa-rocket fa-3x" style="color: #adadad" alt="MintRocket"></i></a></li>
+            <li><a href="https://github.com/MoshirMoshir/BlueMaps"><i class="fa-brands fa-github fa-3x" style="color: #adadad" alt="Source Code"></i></a></li>
+            <li><a href="https://moshir.dev/"><i class="fa-solid fa-carrot fa-3x" style="color: #adadad" alt="about"></i></a></li>
+        </ul>
+    </section>
+
+    <!-- Implement later, menu for each map -->
+    <div class="menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="map.html">World Map</a></li>
+            <li><a href="mobile.html">For Mobile</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const menuToggle = document.querySelector('.toggle');
+        const showcase = document.querySelector('.showcase');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            showcase.classList.toggle('active');
+        })
+    </script>
 
 
-            // Add layer control here
-            var baseMaps = {
-               "Base": imageOverlay,
-               "ShallowA": image2test
-            };
-            var overlayMaps = {
-               "Sharks": sharks
-            };
-            var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
-
-         </script>
-
-      <!-- OLD SCRIPT
-      
-      <script>
-         // Creating map options
-         var mapOptions = {
-         center: [17.3858, 78.48655],
-         zoom: 19.2,
-         attributionControl: false,
-         };
-
-         // Creating a map object
-         var map = L.map("map", mapOptions);
-
-         // Creating an image overlay object
-         var imageUrl = "assets/BlueHole.png"; // Replace with the actual path to your image
-         var imageBounds = [
-            [17.387, 78.485], // Replace with the latitude and longitude coordinates for the top-left corner of your image
-            [17.383, 78.488], // Replace with the latitude and longitude coordinates for the bottom-right corner of your image
-         ];
-         var imageOverlay = L.imageOverlay(imageUrl, imageBounds);
-
-         // Adding image overlay to the map
-         imageOverlay.addTo(map);
-      </script>    -->
 </body>
 </html>
