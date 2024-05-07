@@ -58,7 +58,7 @@
             });
             }
 
-            //Shallows Map
+            // Shallows Map
                 // Creating map options
                 var mapOptions = {
                     crs: L.CRS.Simple,
@@ -71,7 +71,7 @@
                 // Creating a map object
                 var map = L.map("map", mapOptions);
                 
-                // Creating an image overlay object
+                // Creating an image overlay as basemaps
                 var ShallowBounds = [[0, 0], [1700,4000]];
                 var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
                 var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
@@ -80,11 +80,11 @@
                 var ShallowsE = L.imageOverlay("assets/New Shallows/ShallowsE/ShallowsE.png", ShallowBounds);
                 var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF/ShallowsF.png", ShallowBounds);
 
-                // Adding image overlay to the map
+                // Adding initial basemap to the map
                 ShallowsA.addTo(map);
-                //Adjusts the image to be in the map
+                // Adjusts the image to be in the map
                 map.fitBounds(ShallowBounds);
-                //Adjusts the map [start point] and zoom
+                // Adjusts the map [start point] and zoom
                 map.setView([850,2000], -2);
 
                 var baseMaps = {
@@ -100,13 +100,13 @@
                 };      
                 var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
 
-                // Attach an event listener to the baselayerchange event of the map
+                // Runs on basemap change
                 map.on('baselayerchange', function (event) {
                 // Call the function to apply pixelated rendering to all image overlays
                 applyPixelatedRenderingToImageOverlays();
                 });
 
-            //Mediums Map
+            // Mediums Map
                 var map2Options = {
                     crs: L.CRS.Simple,
                     minZoom: -3,
@@ -118,7 +118,7 @@
                 // Creating a map object
                 var map2 = L.map("map2", map2Options);
 
-                // Creating an image overlay object
+                // Creating an image overlay as basemaps
                 var MediumBounds = [[0, 0], [2200,3200]];
                 var MediumA = L.imageOverlay("assets/New Mediums/MediumA/MediumA.png", MediumBounds);
                 var MediumB = L.imageOverlay("assets/New Mediums/MediumB/MediumB.png", MediumBounds);
@@ -126,11 +126,11 @@
                 var MediumD = L.imageOverlay("assets/New Mediums/MediumD/MediumD.png", MediumBounds);
                 var MediumF = L.imageOverlay("assets/New Mediums/MediumF/MediumF.png", MediumBounds);
 
-                // Adding image overlay to the map
+                // Adding initial basemap to the map
                 MediumA.addTo(map2);
-                //Adjusts the image to be in the map
+                // Adjusts the image to be in the map
                 map2.fitBounds(MediumBounds);
-                //Adjusts the map [start point] and zoom
+                // Adjusts the map [start point] and zoom
                 map2.setView([1100,1600], -2);
 
                 var baseMaps2 = {
@@ -145,7 +145,7 @@
                 };
                 var layerControl2 = L.control.layers(baseMaps2, overlayMaps2, {collapsed: false}).addTo(map2);
             
-                // Attach an event listener to the baselayerchange event of the map
+                // Runs on basemap change
                 map2.on('baselayerchange', function (event) {
                 // Call the function to apply pixelated rendering to all image overlays
                 applyPixelatedRenderingToImageOverlays();
@@ -164,16 +164,16 @@
                 // Creating a map object
                 var map3 = L.map("map3", map3Options);
 
-                // Creating an image overlay object
+                // Creating an image overlay as basemaps
                 var DepthsBounds = [[0, 0], [2300,2600]];
                 var DepthsA = L.imageOverlay("assets/New Depths/DepthsA/DepthsA.png", DepthsBounds);
                 var DepthsB = L.imageOverlay("assets/New Depths/DepthsB/DepthsB.png", DepthsBounds);
 
-                // Adding image overlay to the map
+                // Adding initial basemap to the map
                 DepthsA.addTo(map3);
-                //Adjusts the image to be in the map
+                // Adjusts the image to be in the map
                 map3.fitBounds(DepthsBounds);
-                //Adjusts the map [start point] and zoom
+                // Adjusts the map [start point] and zoom
                 map3.setView([1150,1300], -2);
 
                 var baseMaps3 = {
@@ -185,42 +185,16 @@
                 };
                 var layerControl3 = L.control.layers(baseMaps3, overlayMaps3, {collapsed: false}).addTo(map3);
 
-                // Attach an event listener to the baselayerchange event of the map
+                // Runs on basemap change
                 map3.on('baselayerchange', function (event) {
                 // Call the function to apply pixelated rendering to all image overlays
                 applyPixelatedRenderingToImageOverlays();
                 });
 
-
             // applies pixelated rendering on page load
             applyPixelatedRenderingToImageOverlays();
-        </script>
-        <!-- Old script for all Shallows maps
-            <script>
-           // Creating map options
-           var mapOptions = {
-               crs: L.CRS.Simple,
-               minZoom: -3,
-               maxZoom: 3,
-               attributionControl: false,
-           };
-  
-           // Creating a map object
-           var map = L.map("map", mapOptions);
-  
-           // Creating an image overlay object
-           var imageUrl = "assets/Shallows2dAll.png"; // Replace with the actual path to your image
-           var bounds = [[0, 0], [6000,7500]];
-           var imageOverlay = L.imageOverlay(imageUrl, bounds);
 
-           // Adding image overlay to the map
-           imageOverlay.addTo(map);
-           //Adjusts the image to be in the map
-           map.fitBounds(bounds);
-           //Adjusts the map [start point] and zoom
-           map.setView([5100,2000], -1);
-        </script> -->
-          
+        </script>       
  
         <!-- links to socials and whatnot -->
         <ul class="social">
