@@ -187,17 +187,14 @@
             // Get the selected basemap from the Shallows layer control
             var selectedShallowsBasemap = Object.keys(ShallowsbaseMaps)
                 .find(name => map.hasLayer(ShallowsbaseMaps[name]));
-            console.log("Selected Shallows Basemap:", selectedShallowsBasemap);
 
             // Get the selected basemap from the Mediums layer control
             var selectedMediumBasemap = Object.keys(MediumbaseMaps)
                 .find(name => map.hasLayer(MediumbaseMaps[name]));
-            console.log("Selected Medium Basemap:", selectedMediumBasemap);
 
             // Get the selected basemap from the Depths layer control
             var selectedDepthsBasemap = Object.keys(DepthsbaseMaps)
                 .find(name => map.hasLayer(DepthsbaseMaps[name]));
-            console.log("Selected Depths Basemap:", selectedDepthsBasemap);
 
             // Always render overlay on top of basemaps
             map.createPane('overlayPane').style.zIndex = 500;
@@ -207,7 +204,6 @@
                 overlays[selectedMediumBasemap]?.Extracts,
                 overlays[selectedDepthsBasemap]?.Extracts
             ], {pane: 'overlayPane'});
-            console.log("Combined Extracts:", combinedExtracts);
 
             // Return the generated combined extracts layer group
             return {
@@ -258,9 +254,7 @@
 
             // Apply pixel filter on page load
             applyPixelatedRenderingToImageOverlays();
-
     </script>
-      
  
         <!-- links to socials and whatnot -->
         <ul class="social">
@@ -288,7 +282,6 @@
             showcase.classList.toggle('active');
         })
     </script>
-
 
 </body>
 </html>
