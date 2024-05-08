@@ -39,15 +39,12 @@
 
         <div class="overlay"></div>
 
-        <!-- Map implementation will go here -->
-        <div id="map"></div>
-        <div id="map2"></div>
-        <div id="map3"></div>
+    <!-- Map implementation will go here -->
+    <div id="map"></div>
 
-        <script>
-
-            // Function to make maps pixelated - Applied after each map
-            function applyPixelatedRenderingToImageOverlays() {
+    <script>
+        // Function to make maps pixelated - Applied after each map
+        function applyPixelatedRenderingToImageOverlays() {
             // Get all image overlays rendered
             var imageOverlays = document.querySelectorAll('.leaflet-image-layer');
 
@@ -56,324 +53,214 @@
                 // Apply pixelated rendering to the image overlay
                 imageOverlay.style.imageRendering = 'pixelated';
             });
+        }
+
+        // Object to hold map options
+        var mapOptions = {
+            crs: L.CRS.Simple,
+            minZoom: -3,
+            maxZoom: 3,
+            attributionControl: false,
+            fullscreenControl: true,
+        };
+
+        // Creating a map object with mapOptions
+        var map = L.map("map", mapOptions);
+
+        // Shallows Maps
+        var ShallowBounds = [[0, 0], [1700, 4000]];
+        var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
+        var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
+        var ShallowsC = L.imageOverlay("assets/New Shallows/ShallowsC/ShallowsC.png", ShallowBounds);
+        var ShallowsD = L.imageOverlay("assets/New Shallows/ShallowsD/ShallowsD.png", ShallowBounds);
+        var ShallowsE = L.imageOverlay("assets/New Shallows/ShallowsE/ShallowsE.png", ShallowBounds);
+        var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF/ShallowsF.png", ShallowBounds);
+
+        // Mediums Maps
+        var MediumBounds = [[100, -100], [-2600, 4050]];
+        var MediumA = L.imageOverlay("assets/New Mediums/MediumA/MediumA.png", MediumBounds);
+        var MediumB = L.imageOverlay("assets/New Mediums/MediumB/MediumB.png", MediumBounds);
+        var MediumC = L.imageOverlay("assets/New Mediums/MediumC/MediumC.png", MediumBounds);
+        var MediumD = L.imageOverlay("assets/New Mediums/MediumD/MediumD.png", MediumBounds);
+        var MediumF = L.imageOverlay("assets/New Mediums/MediumF/MediumF.png", MediumBounds);
+
+        // Depths Maps
+        var DepthsBounds = [[-2100, -200], [-6100, 4200]];
+        var DepthsA = L.imageOverlay("assets/New Depths/DepthsA/DepthsA.png", DepthsBounds);
+        var DepthsB = L.imageOverlay("assets/New Depths/DepthsB/DepthsB.png", DepthsBounds);
+
+        // Adding initial basemap to the map
+        ShallowsA.addTo(map);
+        MediumA.addTo(map);
+        DepthsA.addTo(map);
+        // Sets the map [start point] and zoom
+        map.setView([0, 2000], -2);
+
+        // Objects to hold basemaps (selection groups) for layerControls
+        var ShallowsbaseMaps = {
+            "ShallowsA": ShallowsA,
+            "ShallowsB": ShallowsB,
+            "ShallowsC": ShallowsC,
+            "ShallowsD": ShallowsD,
+            "ShallowsE": ShallowsE,
+            "ShallowsF": ShallowsF,
+        };
+
+        var MediumbaseMaps = {
+            "MediumA": MediumA,
+            "MediumB": MediumB,
+            "MediumC": MediumC,
+            "MediumD": MediumD,
+            "MediumF": MediumF,
+        };
+
+        var DepthsbaseMaps = {
+            "DepthsA": DepthsA,
+            "DepthsB": DepthsB,
+        };
+
+        // Object to hold overlays
+        var overlays = {
+            "ShallowsA": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsA/EscapePodsA.png", ShallowBounds),
+                // Example layout, TBD to implement 
+                /*
+                "Sharks": L.imageOverlay("assets/New Shallows/SharksA.png", ShallowBounds),
+                "Fish": L.imageOverlay("assets/New Shallows/FishA.png", ShallowBounds),
+                "Items": L.imageOverlay("assets/New Shallows/ItemsA.png", ShallowBounds),
+                "Missions": L.imageOverlay("assets/New Shallows/MissionsA.png", ShallowBounds)
+                */
+            },
+            "ShallowsB": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsB/EscapePodsB.png", ShallowBounds)
+            },
+            "ShallowsC": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsC/EscapePodsC.png", ShallowBounds)
+            },
+            "ShallowsD": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsD/EscapePodsD.png", ShallowBounds)
+            },
+            "ShallowsE": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsE/EscapePodsE.png", ShallowBounds)
+            },
+            "ShallowsF": {
+                "Extracts": L.imageOverlay("assets/New Shallows/ShallowsF/EscapePodsF.png", ShallowBounds)
+            },
+            "MediumA": {
+                "Extracts": L.imageOverlay("assets/New Mediums/MediumA/EscapePodsA.png", MediumBounds)
+            },
+            "MediumB": {
+                "Extracts": L.imageOverlay("assets/New Mediums/MediumB/EscapePodsB.png", MediumBounds)
+            },
+            "MediumC": {
+                "Extracts": L.imageOverlay("assets/New Mediums/MediumC/EscapePodsC.png", MediumBounds)
+            },
+            "MediumD": {
+                "Extracts": L.imageOverlay("assets/New Mediums/MediumD/EscapePodsD.png", MediumBounds)
+            },
+            "MediumF": {
+                "Extracts": L.imageOverlay("assets/New Mediums/MediumF/EscapePodsF.png", MediumBounds)
+            },
+            "DepthsA": {
+                "Extracts": L.imageOverlay("assets/New Depths/DepthsA/EscapePodsA.png", DepthsBounds)
+            },
+            "DepthsB": {
+                "Extracts": L.imageOverlay("assets/New Depths/DepthsB/EscapePodsB.png", DepthsBounds)
             }
+        };
+        
+        // Groups for toggles
+        var combinedExtracts = L.layerGroup([
+            overlays["ShallowsA"]["Extracts"],
+            overlays["MediumA"]["Extracts"],
+            overlays["DepthsA"]["Extracts"]
+        ]);
 
-            // Shallows Map
-                // Creating map options
-                var mapOptions = {
-                    crs: L.CRS.Simple,
-                    minZoom: -3,
-                    maxZoom: 3,
-                    attributionControl: false,
-                    fullscreenControl: true,
-                };
+        // Create overlay maps with default options
+        var overlayMaps = {
+            "Extracts": combinedExtracts
+            // "Sharks": overlays["ShallowsA"]["Sharks"]
+        };
 
-                // Creating a map object
-                var map = L.map("map", mapOptions);
-                
-                // Creating an image overlay as basemaps
-                var ShallowBounds = [[0, 0], [1700,4000]];
-                var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
-                var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
-                var ShallowsC = L.imageOverlay("assets/New Shallows/ShallowsC/ShallowsC.png", ShallowBounds);
-                var ShallowsD = L.imageOverlay("assets/New Shallows/ShallowsD/ShallowsD.png", ShallowBounds);
-                var ShallowsE = L.imageOverlay("assets/New Shallows/ShallowsE/ShallowsE.png", ShallowBounds);
-                var ShallowsF = L.imageOverlay("assets/New Shallows/ShallowsF/ShallowsF.png", ShallowBounds);
+        // Function to generate overlay maps based on the selected base map
+        function generateOverlayMaps() {
+            // Get the selected basemap from the Shallows layer control
+            var selectedShallowsBasemap = Object.keys(ShallowsbaseMaps)
+                .find(name => map.hasLayer(ShallowsbaseMaps[name]));
+            console.log("Selected Shallows Basemap:", selectedShallowsBasemap);
 
-                // Adding initial basemap to the map
-                ShallowsA.addTo(map);
-                // Adjusts the image to be in the map
-                map.fitBounds(ShallowBounds);
-                // Adjusts the map [start point] and zoom
-                map.setView([850,2000], -2);
+            // Get the selected basemap from the Mediums layer control
+            var selectedMediumBasemap = Object.keys(MediumbaseMaps)
+                .find(name => map.hasLayer(MediumbaseMaps[name]));
+            console.log("Selected Medium Basemap:", selectedMediumBasemap);
 
-                // Object to hold the basemaps
-                var baseMaps = {
-                    "ShallowsA": ShallowsA,
-                    "ShallowsB": ShallowsB,
-                    "ShallowsC": ShallowsC,
-                    "ShallowsD": ShallowsD,
-                    "ShallowsE": ShallowsE,
-                    "ShallowsF": ShallowsF
-                };     
+            // Get the selected basemap from the Depths layer control
+            var selectedDepthsBasemap = Object.keys(DepthsbaseMaps)
+                .find(name => map.hasLayer(DepthsbaseMaps[name]));
+            console.log("Selected Depths Basemap:", selectedDepthsBasemap);
 
-                // Object to hold overlays
-                var overlays = {
-                    "ShallowsA": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsA/EscapePodsA.png", ShallowBounds),
-                        // Example layout, TBD to implement 
-                        /*
-                        "Sharks": L.imageOverlay("assets/New Shallows/SharksA.png", ShallowBounds),
-                        "Fish": L.imageOverlay("assets/New Shallows/FishA.png", ShallowBounds),
-                        "Items": L.imageOverlay("assets/New Shallows/ItemsA.png", ShallowBounds),
-                        "Missions": L.imageOverlay("assets/New Shallows/MissionsA.png", ShallowBounds)
-                        */
-                    },
-                    "ShallowsB": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsB/EscapePodsB.png", ShallowBounds)
-                    },
-                    "ShallowsC": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsC/EscapePodsC.png", ShallowBounds)
-                    },
-                    "ShallowsD": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsD/EscapePodsD.png", ShallowBounds)
-                    },
-                    "ShallowsE": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsE/EscapePodsE.png", ShallowBounds)
-                    },
-                    "ShallowsF": {
-                        "Extracts": L.imageOverlay("assets/New Shallows/ShallowsF/EscapePodsF.png", ShallowBounds)
-                    }
-                };      
+            // Always render overlay on top of basemaps
+            map.createPane('overlayPane').style.zIndex = 500;
+            // Add selected extracts from Shallows, Mediums, and Depths basemaps to combinedExtracts
+            var combinedExtracts = L.layerGroup([
+                overlays[selectedShallowsBasemap]?.Extracts,
+                overlays[selectedMediumBasemap]?.Extracts,
+                overlays[selectedDepthsBasemap]?.Extracts
+            ], {pane: 'overlayPane'});
+            console.log("Combined Extracts:", combinedExtracts);
 
-                // Create overlay maps with default options
-                var overlayMaps = {
-                    "Extracts": overlays["ShallowsA"]["Extracts"],
-                    // "Sharks": overlays["ShallowsA"]["Sharks"]
-                };
+            // Return the generated combined extracts layer group
+            return {
+                "Extracts": combinedExtracts
+            };
+        }
 
-                // Function to generate overlay maps based on the selected base map
-                function generateOverlayMaps(baseMapName) {
-                    var overlayMaps = {};
-                    var overlayGroup = overlays[baseMapName];
-                    for (var overlayName in overlayGroup) {
-                        if (overlayGroup.hasOwnProperty(overlayName)) {
-                            overlayMaps[overlayName] = overlayGroup[overlayName];
-                        }
-                    }
-                    return overlayMaps;
-                }
+        // Creating separate layer controls for each area
+        var shallowsLayerControl = L.control.layers(ShallowsbaseMaps, null, { collapsed: false }).addTo(map);
 
-                var layerControl = L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+        var mediumsLayerControl = L.control.layers(MediumbaseMaps, null, { collapsed: false }).addTo(map);
 
-                // Runs on basemap change
-                map.on('baselayerchange', function (event) {
-                    // Overlay Logic
-                        // Removes assigned overlay from previous basemap
-                        overlayMaps = {};
+        var depthsLayerControl = L.control.layers(DepthsbaseMaps, null, { collapsed: false }).addTo(map);
 
-                        // Remove all rendered overlay layers from the map
-                        for (var overlayName in overlays) {
-                            if (overlays.hasOwnProperty(overlayName)) {
-                                var overlayGroup = overlays[overlayName];
-                                for (var overlay in overlayGroup) {
-                                    if (overlayGroup.hasOwnProperty(overlay)) {
-                                        map.removeLayer(overlayGroup[overlay]);
-                                    }
-                                }
+        var overlayControl = L.control.layers(null, overlayMaps, { collapsed: false }).addTo(map);
+
+        // Runs on basemap change
+        map.on('baselayerchange', function (event) {
+            // Overlay Logic
+                // Removes assigned overlay from previous basemap
+                overlayMaps = {};
+
+                // Remove all rendered overlay layers from the map
+                for (var overlayName in overlays) {
+                    if (overlays.hasOwnProperty(overlayName)) {
+                        var overlayGroup = overlays[overlayName];
+                        for (var overlay in overlayGroup) {
+                            if (overlayGroup.hasOwnProperty(overlay)) {
+                                map.removeLayer(overlayGroup[overlay]);
                             }
                         }
-
-                        // Regenerate overlayMaps based on the new basemap
-                        overlayMaps = generateOverlayMaps(event.name);
-
-                        // Update the layer control with the new overlayMaps
-                        layerControl.remove();
-                        layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-                });
-
-                // Apply pixel filter on any render
-                map.on('baselayerchange overlayadd', function () {
-                    applyPixelatedRenderingToImageOverlays();
-                });
-
-
-            // Mediums Map
-                var map2Options = {
-                    crs: L.CRS.Simple,
-                    minZoom: -3,
-                    maxZoom: 3,
-                    attributionControl: false,
-                    fullscreenControl: true,
-                };
-
-                // Creating a map object
-                var map2 = L.map("map2", map2Options);
-
-                // Creating an image overlay as basemaps
-                var MediumBounds = [[0, 0], [2200,3200]];
-                var MediumA = L.imageOverlay("assets/New Mediums/MediumA/MediumA.png", MediumBounds);
-                var MediumB = L.imageOverlay("assets/New Mediums/MediumB/MediumB.png", MediumBounds);
-                var MediumC = L.imageOverlay("assets/New Mediums/MediumC/MediumC.png", MediumBounds);
-                var MediumD = L.imageOverlay("assets/New Mediums/MediumD/MediumD.png", MediumBounds);
-                var MediumF = L.imageOverlay("assets/New Mediums/MediumF/MediumF.png", MediumBounds);
-
-                // Adding initial basemap to the map
-                MediumA.addTo(map2);
-                // Adjusts the image to be in the map
-                map2.fitBounds(MediumBounds);
-                // Adjusts the map [start point] and zoom
-                map2.setView([1100,1600], -2);
-
-                var baseMaps2 = {
-                    "MediumA": MediumA,
-                    "MediumB": MediumB,
-                    "MediumC": MediumC,
-                    "MediumD": MediumD,
-                    "MediumF": MediumF
-                };
-
-                var overlays2 = {
-                    "MediumA": {
-                        "Extracts": L.imageOverlay("assets/New Mediums/MediumA/EscapePodsA.png", MediumBounds)
-                    },
-                    "MediumB": {
-                        "Extracts": L.imageOverlay("assets/New Mediums/MediumB/EscapePodsB.png", MediumBounds)
-                    },
-                    "MediumC": {
-                        "Extracts": L.imageOverlay("assets/New Mediums/MediumC/EscapePodsC.png", MediumBounds)
-                    },
-                    "MediumD": {
-                        "Extracts": L.imageOverlay("assets/New Mediums/MediumD/EscapePodsD.png", MediumBounds)
-                    },
-                    "MediumF": {
-                        "Extracts": L.imageOverlay("assets/New Mediums/MediumF/EscapePodsF.png", MediumBounds)
                     }
-                };
-
-                // Create overlay maps with default options
-                var overlayMaps2 = {
-                    "Extracts": overlays2["MediumA"]["Extracts"]
-                };
-
-                // Function to generate overlay maps based on the selected base map
-                function generateOverlayMaps2(baseMapName) {
-                    var overlayMaps2 = {};
-                    var overlayGroup2 = overlays2[baseMapName];
-                    for (var overlayName in overlayGroup2) {
-                        if (overlayGroup2.hasOwnProperty(overlayName)) {
-                            overlayMaps2[overlayName] = overlayGroup2[overlayName];
-                        }
-                    }
-                    return overlayMaps2;
                 }
 
-                var layerControl2 = L.control.layers(baseMaps2, overlayMaps2, {collapsed: false}).addTo(map2);
-            
-                // Runs on basemap change
-                map2.on('baselayerchange', function (event) {
-                    // Overlay Logic
-                        // Removes assigned overlay from previous basemap
-                        overlayMaps2 = {};
+                // Regenerate overlayMaps based on the new basemap
+                overlayMaps = generateOverlayMaps(event.name);
 
-                        // Remove all rendered overlay layers from the map
-                        for (var overlayName in overlays2) {
-                            if (overlays2.hasOwnProperty(overlayName)) {
-                                var overlayGroup2 = overlays2[overlayName];
-                                for (var overlay2 in overlayGroup2) {
-                                    if (overlayGroup2.hasOwnProperty(overlay2)) {
-                                        map2.removeLayer(overlayGroup2[overlay2]);
-                                    }
-                                }
-                            }
-                        }
+                // Update the layer control with the new overlayMaps
+                overlayControl.remove();
+                overlayControl = L.control.layers(null, overlayMaps, { collapsed: false }).addTo(map);
+        });
 
-                        // Regenerate overlayMaps based on the new basemap
-                        overlayMaps2 = generateOverlayMaps2(event.name);
+        // Pixel filter application
+            // Apply pixel filter on any new render
+            map.on('baselayerchange overlayadd', function () {
+                applyPixelatedRenderingToImageOverlays();
+            });
 
-                        // Update the layer control with the new overlayMaps
-                        layerControl2.remove();
-                        layerControl2 = L.control.layers(baseMaps2, overlayMaps2, { collapsed: false }).addTo(map2);
-                });
-
-                // Apply pixel filter on any render
-                map2.on('baselayerchange overlayadd', function () {
-                    applyPixelatedRenderingToImageOverlays();
-                });
-
-            //Depths Map
-
-                var map3Options = {
-                    crs: L.CRS.Simple,
-                    minZoom: -3,
-                    maxZoom: 3,
-                    attributionControl: false,
-                    fullscreenControl: true,
-                };
-
-                // Creating a map object
-                var map3 = L.map("map3", map3Options);
-
-                // Creating an image overlay as basemaps
-                var DepthsBounds = [[0, 0], [2300,2600]];
-                var DepthsA = L.imageOverlay("assets/New Depths/DepthsA/DepthsA.png", DepthsBounds);
-                var DepthsB = L.imageOverlay("assets/New Depths/DepthsB/DepthsB.png", DepthsBounds);
-
-                // Adding initial basemap to the map
-                DepthsA.addTo(map3);
-                // Adjusts the image to be in the map
-                map3.fitBounds(DepthsBounds);
-                // Adjusts the map [start point] and zoom
-                map3.setView([1150,1300], -2);
-
-                var baseMaps3 = {
-                    "DepthsA": DepthsA,
-                    "DepthsB": DepthsB
-                };
-
-                // Object to hold overlays
-                var overlays3 = {
-                    "DepthsA": {
-                        "Extracts": L.imageOverlay("assets/New Depths/DepthsA/EscapePodsA.png", DepthsBounds)
-                    },
-                    "DepthsB": {
-                        "Extracts": L.imageOverlay("assets/New Depths/DepthsB/EscapePodsB.png", DepthsBounds)
-                    }
-                };
-
-                var overlayMaps3 = {
-                    "Extracts": overlays3["DepthsA"]["Extracts"]
-                };
-
-                // Function to generate overlay maps based on the selected base map
-                function generateOverlayMaps3(baseMapName) {
-                    var overlayMaps3 = {};
-                    var overlayGroup3 = overlays3[baseMapName];
-                    for (var overlayName in overlayGroup3) {
-                        if (overlayGroup3.hasOwnProperty(overlayName)) {
-                            overlayMaps3[overlayName] = overlayGroup3[overlayName];
-                        }
-                    }
-                    return overlayMaps3;
-                }
-
-                var layerControl3 = L.control.layers(baseMaps3, overlayMaps3, {collapsed: false}).addTo(map3);
-
-                // Runs on basemap change
-                map3.on('baselayerchange', function (event) {
-                    // Overlay Logic
-                        // Removes assigned overlay from previous basemap
-                        overlayMaps3 = {};
-
-                        // Remove all rendered overlay layers from the map
-                        for (var overlayName in overlays3) {
-                            if (overlays3.hasOwnProperty(overlayName)) {
-                                var overlayGroup3 = overlays3[overlayName];
-                                for (var overlay3 in overlayGroup3) {
-                                    if (overlayGroup3.hasOwnProperty(overlay3)) {
-                                        map3.removeLayer(overlayGroup3[overlay3]);
-                                    }
-                                }
-                            }
-                        }
-
-                        // Regenerate overlayMaps based on the new basemap
-                        overlayMaps3 = generateOverlayMaps3(event.name);
-
-                        // Update the layer control with the new overlayMaps
-                        layerControl3.remove();
-                        layerControl3 = L.control.layers(baseMaps3, overlayMaps3, { collapsed: false }).addTo(map3);
-                });
-
-                // Apply pixel filter on any render
-                map3.on('baselayerchange overlayadd', function () {
-                    applyPixelatedRenderingToImageOverlays();
-                });
-
-            // applies pixelated rendering on page load
+            // Apply pixel filter on page load
             applyPixelatedRenderingToImageOverlays();
 
-        </script>       
+    </script>
+      
  
         <!-- links to socials and whatnot -->
         <ul class="social">
@@ -389,7 +276,6 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="map.html">World Map</a></li>
-            <li><a href="mobile.html">For Mobile</a></li>
         </ul>
     </div>
 
