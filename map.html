@@ -69,7 +69,6 @@
 
         // Shallows Maps
         var ShallowBounds = [[0, 0], [1700, 4000]];
-        var ShallowsA = L.imageOverlay("assets/New Shallows/ShallowsA/ShallowsA.png", ShallowBounds);
         var ShallowsB = L.imageOverlay("assets/New Shallows/ShallowsB/ShallowsB.png", ShallowBounds);
         var ShallowsC = L.imageOverlay("assets/New Shallows/ShallowsC/ShallowsC.png", ShallowBounds);
         var ShallowsD = L.imageOverlay("assets/New Shallows/ShallowsD/ShallowsD.png", ShallowBounds);
@@ -98,7 +97,6 @@
 
         // Objects to hold basemaps (selection groups) for layerControls
         var ShallowsbaseMaps = {
-            "ShallowsA": ShallowsA,
             "ShallowsB": ShallowsB,
             "ShallowsC": ShallowsC,
             "ShallowsD": ShallowsD,
@@ -121,16 +119,18 @@
 
         // Object to hold overlays
         var overlays = {
+            // Example layout, TBD to implement 
+            /*
             "ShallowsA": {
                 "Extracts": L.imageOverlay("assets/New Shallows/ShallowsA/EscapePodsA.png", ShallowBounds),
-                // Example layout, TBD to implement 
-                /*
+                
                 "Sharks": L.imageOverlay("assets/New Shallows/SharksA.png", ShallowBounds),
                 "Fish": L.imageOverlay("assets/New Shallows/FishA.png", ShallowBounds),
                 "Items": L.imageOverlay("assets/New Shallows/ItemsA.png", ShallowBounds),
                 "Missions": L.imageOverlay("assets/New Shallows/MissionsA.png", ShallowBounds)
-                */
+                
             },
+            */
             "ShallowsB": {
                 "Extracts": L.imageOverlay("assets/New Shallows/ShallowsB/EscapePodsB.png", ShallowBounds)
             },
@@ -171,7 +171,7 @@
         
         // Groups for toggles
         var combinedExtracts = L.layerGroup([
-            overlays["ShallowsA"]["Extracts"],
+            overlays["ShallowsB"]["Extracts"],
             overlays["MediumA"]["Extracts"],
             overlays["DepthsA"]["Extracts"]
         ]);
