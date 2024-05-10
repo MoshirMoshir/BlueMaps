@@ -1,5 +1,5 @@
 # BlueMaps
-BlueMaps is an interactive map of the Blue Hole from Dave the Diver!
+BlueMaps is an interactive map of the Blue Hole from Dave the Diver! <br>
 Navigate your way from the Shallows to the Depths and also find points of interests with ease!
 
 ## !!! Announcement !!!
